@@ -1,15 +1,7 @@
 # -*- coding: UTF-8 -*-
 import urllib2
 import json
-def year(d):
- return d[0:4] 
 
-def month(d):
- return d[4:6]
-
-def day(d):
- return d[6:8]
-f = open('secondfile','w')
 for offset in xrange(2):
  print "-"
  base_request = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='
