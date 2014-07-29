@@ -9,7 +9,7 @@ def month(d):
 
 def day(d):
  return d[6:8]
-f = open('newfile','w')
+f = open('secondfile','w')
 for offset in xrange(2):
  print "-"
  base_request = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='
@@ -18,12 +18,9 @@ for offset in xrange(2):
  query = base_request + add_query
  response = urllib2.urlopen(query)
  content = response.read()
- #decoded = json.loads(response_string)
 decoded = json.loads(content)
-print decoded
-#for x in decoded['results']:
- #string = x['date']
- #print(year(string) + " " + month(string) + " " + day(string)+"\t")
-# print((x['title'].encode('utf-8') ).replace("’","'").replace("'","'")+"\t")
-# print(x['url']+"\n")
-#raw_input("Press enter to quit")
+#print 'CLEANED DATA', json.dumps(decoded, indent=4)
+
+for x in decoded['response']['docs']:
+	print x['web_url']
+	print x['headline']['main']
